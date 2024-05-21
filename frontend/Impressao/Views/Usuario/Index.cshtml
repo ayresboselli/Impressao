@@ -1,0 +1,98 @@
+﻿@model List<Impressao.Models.Usuario>
+@inject IHttpContextAccessor Accessor
+
+@{
+    ViewData["Title"] = "Usuários";
+    string[] listaFuncoes = Accessor.HttpContext.Session.GetString("Functions").Split(",");
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Usuários</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Usuários</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+        @ViewBag.Success
+    </div>
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                
+                @if (listaFuncoes.Contains("cad_usuarios"))
+                {
+                <div class="mb-2">
+                    <a class="btn btn-sm btn-success" asp-action="Create">Novo</a>
+                </div>
+                }
+
+                <table class="table table-sm table-bordered table-striped datatable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Data de cadastro</th>
+                            <th>Ativo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Nome</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.DataCadastro</td>
+                                    <td>
+                                        @if(item.Ativo){
+                                            <span class="text-success">Sim</span>
+                                        }else{
+                                            <span class="text-danger">Não</span>
+                                        }
+                                    </td>
+                                    <td class="text-center" style="width:100px">
+                                        @if (listaFuncoes.Contains("cad_usuarios"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id" title="Editar" class="mx-2"><i class="fas fa-pen"></i></a>
+                                        }
+                                        @if (listaFuncoes.Contains("alt_senha_usuarios"))
+                                        {
+                                            <a asp-action="Password" asp-route-id="@item.Id" title="Alterar senha" class="mx-2"><i class="fas fa-key"></i></a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">Nenhum registro</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

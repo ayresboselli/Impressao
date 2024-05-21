@@ -1,0 +1,47 @@
+﻿@model Impressao.ViewModel.UnidadeMedidaConversaoViewModel
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" asp-for="Conversao.Id"></label>
+                </div>
+                <input type="number" asp-for="Conversao.Id" onchange="ValidaId(this.value)" class="form-control form-control-sm" readonly />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">1</span>
+                </div>
+                <select asp-for="Conversao.IdUnidadeOriginal" class="form-control form-control-sm" asp-items="@(new SelectList(Model.UnidadesMedida, nameof(UnidadeMedida.Id), nameof(UnidadeMedida.Sigla)))" required>
+                    <option>Selecione uma unidade de medida</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="form-group">
+            <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">equivale a</span>
+                </div>
+                <input type="text" asp-for="Conversao.Proporcao" class="form-control form-control-sm" required />
+                <div class="input-group-append">
+                    <select asp-for="Conversao.IdUnidadeConvertida" class="form-control form-control-sm" asp-items="@(new SelectList(Model.UnidadesMedida, nameof(UnidadeMedida.Id), nameof(UnidadeMedida.Sigla)))" required>
+                        <option>Selecione uma unidade de medida</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-right">
+    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+</div>

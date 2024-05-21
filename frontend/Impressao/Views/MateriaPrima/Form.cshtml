@@ -1,0 +1,84 @@
+﻿@model Impressao.ViewModel.MateriaPrimaViewModel
+
+<div class="row">
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label asp-for="Materia.Id"></label>
+            <input type="number" asp-for="Materia.Id" onchange="ValidaId(this.value)" class="form-control form-control-sm" readonly />
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label for="Materia.Titulo"><span class="text-danger">*</span> Titulo</label>
+            <input type="text" asp-for="Materia.Titulo" class="form-control form-control-sm" required />
+            <span asp-validation-for="Materia.Titulo" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="col-sm-2">
+        <div class="mt-4 pt-2">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" asp-for="Materia.Ativo" checked>
+                <label for="Materia.Ativo"><span class="text-danger">*</span> Ativo</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="Materia.IdGrupo"><span class="text-danger">*</span> Grupo</label>
+            <select asp-for="Materia.IdGrupo" class="form-control form-control-sm" asp-items="@(new SelectList(Model.Grupos, nameof(MateriaPrimaGrupo.Id), nameof(MateriaPrimaGrupo.Titulo)))" required>
+                <option>Selecione um grupo</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="Materia.IdSetorEstoque"><span class="text-danger">*</span> Setor de estoque</label>
+            <select asp-for="Materia.IdSetorEstoque" class="form-control form-control-sm" asp-items="@(new SelectList(Model.SetoresEstoque, nameof(SetorEstoque.Id), nameof(SetorEstoque.Titulo)))" required>
+                <option>Selecione um setor</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="Materia.IdUnidadeMedida"><span class="text-danger">*</span> Unidade de medida</label>
+            <select asp-for="Materia.IdUnidadeMedida" class="form-control form-control-sm" asp-items="@(new SelectList(Model.UnidadesMedida, nameof(UnidadeMedida.Id), nameof(UnidadeMedida.Titulo)))" required>
+                <option>Selecione uma unidade de medida</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="Materia.UltimoValor"><span class="text-danger">*</span> Último valor</label>
+            <input type="text" asp-for="Materia.UltimoValor" class="form-control form-control-sm" required />
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="Materia.ValorMedio"><span class="text-danger">*</span> Valor médio</label>
+            <input type="text" asp-for="Materia.ValorMedio" class="form-control form-control-sm" required />
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="Materia.Quantidade"><span class="text-danger">*</span> Quantidade</label>
+            <input type="text" asp-for="Materia.Quantidade" class="form-control form-control-sm" required />
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Materia.Descricao">Descrição</label>
+    <textarea type="text" asp-for="Materia.Descricao" class="form-control form-control-sm"></textarea>
+</div>
+
+<div class="text-right">
+    <button type="submit" class="btn btnm btn-success">Salvar</button>
+</div>

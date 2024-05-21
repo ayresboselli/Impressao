@@ -1,0 +1,36 @@
+﻿@model Impressao.Models.Cliente
+
+@{
+    ViewData["Title"] = "Cliente";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Cliente</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Clientes</a></li>
+                    <li class="breadcrumb-item active">Cliente</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    @Html.Partial("~/Views/Cliente/Form.cshtml")
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/js/cliente/edit.js"></script>

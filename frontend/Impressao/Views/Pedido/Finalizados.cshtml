@@ -1,0 +1,79 @@
+﻿@model List<Impressao.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Pedidos";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Pedidos finalizados</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Pedidos finalizados</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+        @ViewBag.Success
+    </div>
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <table id="tblPedido" class="table table-sm table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Contrato</th>
+                            <th>Data de entrada</th>
+                            <th>Previsão de entrega</th>
+                            <th>Data finalização</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Cliente.Id - @item.Cliente.RazaoSocial</td>
+                                    <td>@item.Contrato</td>
+                                    <td>@item.DataEntrada</td>
+                                    <td>@item.PrevisaoEntrega</td>
+                                    <td>@item.DataFinalizado</td>
+                                    <td style="width:100px">
+                                        <a asp-action="View" asp-route-id="@item.Id" title="Visualizar" class="mx-2"><i class="fas fa-search"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center">Nenhum registro</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="~/js/pedido/index.js"></script>

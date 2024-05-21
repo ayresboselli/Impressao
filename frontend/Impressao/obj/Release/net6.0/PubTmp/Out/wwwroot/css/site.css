@@ -1,0 +1,46 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.dvImpMidia {
+    border: 1px solid #000;
+    margin: auto;
+}
+
+.dvImpImagem {
+    border: 1px solid #000;
+    position: absolute;
+}
+
+.infoBarcode {
+    background: #000;
+    width: 30px;
+    height: 15px;
+    margin-left: -15px;
+    margin-bottom: -15px;
+    position: relative;
+}
+
+.infoText {
+    background: #000;
+    width: 60px;
+    height: 2px;
+    margin-left: -30px;
+    margin-bottom: -2px;
+    position: relative;
+}

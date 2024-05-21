@@ -1,0 +1,103 @@
+﻿@model Impressao.Models.Config
+
+@{
+    ViewData["Title"] = "Parâmetros";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Parâmetros</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Parâmetros</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+        @ViewBag.Success
+    </div>
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Salvar" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="row mb-3">
+                        <div class="col-sm-2">
+                            <label for="DPI"><span class="text-danger">*</span> DPI</label>
+                            <input type="number" asp-for="DPI" min="0" class="form-control form-control-sm" required>
+                            <span asp-validation-for="DPI" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="UnidadeMedida"><span class="text-danger">*</span> Unidade de medida</label>
+                            <select asp-for="UnidadeMedida" class="form-control form-control-sm" required>
+                                <option>mm</option>
+                            </select>
+                            <span asp-validation-for="UnidadeMedida" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="PathFotos"><span class="text-danger">*</span> Pasta para salvar as fotos</label>
+                            <input type="text" asp-for="PathFotos" class="form-control form-control-sm" required>
+                            <span asp-validation-for="PathFotos" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="PathPdf"><span class="text-danger">*</span> Pasta de saída dos PDFs</label>
+                            <input type="text" asp-for="PathPdf" class="form-control form-control-sm" required>
+                            <span asp-validation-for="PathPdf" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="mt-4 pt-2">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" asp-for="AprovarAutomaticamente">
+                                    <label for="AprovarAutomaticamente">Aprovar automaticamente</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Index</h4>
+                    <div class="row mb-3">
+                        <div class="col-sm-2">
+                            <label for="MargemMidia"><span class="text-danger">*</span> Margens da mídia</label>
+                            <input type="number" asp-for="MargemMidia" min="0" class="form-control form-control-sm" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="MargemThumb"><span class="text-danger">*</span> Margens da imagem</label>
+                            <input type="number" asp-for="MargemThumb" min="0" class="form-control form-control-sm" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="LarguraThumb"><span class="text-danger">*</span> Largura da imagem</label>
+                            <input type="number" asp-for="LarguraThumb" min="0" class="form-control form-control-sm" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="AlturaThumb"><span class="text-danger">*</span> Altura da imagem</label>
+                            <input type="number" asp-for="AlturaThumb" min="0" class="form-control form-control-sm" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="TamanhoFonte"><span class="text-danger">*</span> Tamanho da fonte</label>
+                            <input type="number" asp-for="TamanhoFonte" min="0" class="form-control form-control-sm" required>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,507 @@
+﻿@inject IHttpContextAccessor Accessor
+@{
+    string[] listaFuncoes = "".Split();
+    var perm = Accessor.HttpContext.Session.GetString("Functions");
+    if(perm != null)
+    {
+        listaFuncoes = perm.Split(",");
+    }
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="~/img/favicon.ico">
+    <title>@ViewData["Title"] - Impressão</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Impressao.styles.css" asp-append-version="true" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css" asp-append-version="true">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" asp-append-version="true">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="~/plugins/toastr/toastr.min.css" asp-append-version="true">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" asp-append-version="true">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" asp-append-version="true">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css" asp-append-version="true">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/plugins/jqvmap/jqvmap.min.css" asp-append-version="true">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css" asp-append-version="true">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css" asp-append-version="true">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css" asp-append-version="true">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css" asp-append-version="true">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    @Html.AntiForgeryToken()
+    <div class="wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="~/img/logo_mini.png" alt="AdminLTELogo" width="65" height="60">
+        </div>
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#modalAltSenha" class="dropdown-item">
+                            Alterar senha
+                        </a>
+                        <a asp-controller="Auth" asp-action="Logout" class="dropdown-item">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            Sair
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a asp-controller="Home" asp-action="Index" class="brand-link">
+                <h2>Impressão</h2>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                        <span id="userName" class="text-light"></span>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                             with font-awesome or any other icon font library -->
+                        @*<li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./index.html" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Dashboard v1</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>*@
+                        <li class="nav-item">
+                            <a id="MenuHome" class="nav-link" asp-controller="Home" asp-action="Index">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Home</p>
+                            </a>
+                        </li>
+
+                        @if (listaFuncoes.Contains("ver_pedidos_ativos") || listaFuncoes.Contains("ver_pedidos_finalizados"))
+                        {
+                            <li id="MenuLiPedido" class="nav-item">
+                                <a id="MenuPedido" href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-list"></i>
+                                    <p>
+                                        Pedidos
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @if (listaFuncoes.Contains("ver_pedidos_ativos"))
+                                    {
+                                    <li class="nav-item">
+                                        <a id="MenuPedidoAtivos" class="nav-link" asp-controller="Pedido" asp-action="Index">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Ativos</p>
+                                        </a>
+                                    </li>
+                                    }
+                                    @if (listaFuncoes.Contains("ver_pedidos_finalizados"))
+                                    {
+                                    <li class="nav-item">
+                                        <a id="MenuPedidoFinalizados" class="nav-link" asp-controller="Pedido" asp-action="Finalizados">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Finalizados</p>
+                                        </a>
+                                    </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @*<li class="nav-item">
+                            <a id="MenuPedidoReimpressao" class="nav-link" asp-controller="PedidoReimpressao" asp-action="Index">
+                                <i class="nav-icon fas fa-print"></i>
+                                <p>Reimpressão</p>
+                            </a>
+                        </li>*@
+                        @if (listaFuncoes.Contains("ver_clientes") || listaFuncoes.Contains("ver_cliente_grupos"))
+                        {
+                            <li id="MenuLiCliente" class="nav-item">
+                                <a id="MenuCliente" href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-address-card"></i>
+                                    <p>
+                                        Clientes
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @if (listaFuncoes.Contains("ver_clientes"))
+                                    {
+                                    <li class="nav-item">
+                                        <a id="MenuCadCliente" class="nav-link" asp-controller="Cliente" asp-action="Index">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Cliente</p>
+                                        </a>
+                                    </li>
+                                    }
+                                    @if (listaFuncoes.Contains("ver_cliente_grupos"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuGrupoCliente" class="nav-link" asp-controller="ClienteGrupo" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Grupo</p>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+                        @if (listaFuncoes.Contains("ver_produtos") || listaFuncoes.Contains("ver_produto_grupos"))
+                        {
+                            <li id="MenuLiProduto" class="nav-item">
+                                <a id="MenuProduto" href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-image"></i>
+                                    <p>
+                                        Produtos
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @if (listaFuncoes.Contains("ver_produtos"))
+                                    {
+                                    <li class="nav-item">
+                                        <a id="MenuCadProduto" class="nav-link" asp-controller="Produto" asp-action="Index">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Produto</p>
+                                        </a>
+                                    </li>
+                                    }
+                                    @if (listaFuncoes.Contains("ver_produto_grupos"))
+                                    {
+                                    <li class="nav-item">
+                                        <a id="MenuGrupoProduto" class="nav-link" asp-controller="ProdutoGrupo" asp-action="Index">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Grupo</p>
+                                        </a>
+                                    </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+                        @if (listaFuncoes.Contains("ver_tab_precos"))
+                        {
+                            <li id="MenuLiTabelaPreco" class="nav-item">
+                                <a id="MenuTabelaPreco" class="nav-link" asp-controller="TabelaPreco" asp-action="Index">
+                                    <i class="nav-icon fas fa-dollar-sign"></i>
+                                    <p>Tabela de preços</p>
+                                </a>
+                            </li>
+                        }
+
+                        @if (
+                            listaFuncoes.Contains("ver_celulas") || listaFuncoes.Contains("ver_unidades_medida") || listaFuncoes.Contains("ver_unid_med_conv") ||
+                            listaFuncoes.Contains("ver_setores") || listaFuncoes.Contains("ver_materias_prima") || listaFuncoes.Contains("ver_mat_prima_grupos")
+                            )
+                        {
+                            <li id="MenuLiPCP" class="nav-item">
+                                <a id="MenuPCP" href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-network-wired"></i>
+                                    <p>
+                                        PCP
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @if (listaFuncoes.Contains("ver_celulas"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuCadCelula" class="nav-link" asp-controller="Celula" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Células</p>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (listaFuncoes.Contains("ver_unidades_medida"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuCadUnidadeMedida" class="nav-link" asp-controller="UnidadeMedida" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Unidades de medida</p>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (listaFuncoes.Contains("ver_unid_med_conv"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuCadUnidadeMedidaConversao" class="nav-link" asp-controller="UnidadeMedidaConversao" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Conversões de unidades de medida</p>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (listaFuncoes.Contains("ver_setores"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuCadSetorEstoque" class="nav-link" asp-controller="SetorEstoque" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Setor de estoque</p>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (listaFuncoes.Contains("ver_materias_prima"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuCadMateriaPrima" class="nav-link" asp-controller="MateriaPrima" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Matéria prima</p>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (listaFuncoes.Contains("ver_mat_prima_grupos"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuCadMateriaPrimaGrupo" class="nav-link" asp-controller="MateriaPrimaGrupo" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Grupo de matéria prima</p>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+                        @if (listaFuncoes.Contains("ver_usuarios") || listaFuncoes.Contains("ver_perfis"))
+                        {
+                            <li id="MenuLiUsuario" class="nav-item">
+                                <a id="MenuUsuario" href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Usuários
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @if (listaFuncoes.Contains("ver_usuarios"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuCadUsuario" class="nav-link" asp-controller="Usuario" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Usuários</p>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (listaFuncoes.Contains("ver_perfis"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuCadPerfil" class="nav-link" asp-controller="Perfil" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Perfis</p>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+                        @if (listaFuncoes.Contains("config_dados_empresa") || listaFuncoes.Contains("config_parametros"))
+                        {
+                            <li id="MenuLiConfig" class="nav-item">
+                                <a id="MenuConfig" href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-cog"></i>
+                                    <p>
+                                        Configurações
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @if (listaFuncoes.Contains("config_dados_empresa"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuConfigEmpresa" class="nav-link" asp-controller="Empresa" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Empresa</p>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (listaFuncoes.Contains("config_parametros"))
+                                    {
+                                        <li class="nav-item">
+                                            <a id="MenuConfigParam" class="nav-link" asp-controller="Config" asp-action="Index">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Parâmetros</p>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+    
+
+    
+        <div class="content-wrapper">
+            <main role="main" class="mx-4">
+                @RenderBody()
+            </main>
+        </div>
+
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <strong>
+                <b>Piovelli</b> Impressão - <b>Versão</b> 1.0.0
+            </strong>
+        
+            <div class="float-right d-none d-sm-inline-block">
+                <img src="~/img/logo.png" style="height:30px" />
+            </div>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+    </div>
+
+    <!-- Modal alterar senha-->
+    <div id="modalAltSenha" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Alterar senha</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="password" id="senhaA" placeholder="Senha antiga" class="form-control form-control-sm" />
+                        <p id="spanSenhaA" class="text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="senhaN" placeholder="Nova senha" class="form-control form-control-sm" />
+                        <p id="spanSenhaN" class="text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="senhaR" placeholder="Repita a nova senha" class="form-control form-control-sm" />
+                        <p id="spanSenhaR" class="text-danger"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="modalAltSenhaSalvar" class="btn btn-success">Salvar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    @*<script src="~/plugins/sparklines/sparkline.js"></script>*@
+    <!-- JQVMap -->
+    <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/plugins/moment/moment.min.js"></script>
+    <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/plugins/jszip/jszip.min.js"></script>
+    <script src="~/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- Toastr -->
+    <script src="~/plugins/toastr/toastr.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="~/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.js"></script>
+    @*<!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/dist/js/pages/dashboard.js"></script>*@
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

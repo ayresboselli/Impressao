@@ -1,0 +1,179 @@
+﻿@model Impressao.Models.Pedido
+@inject IHttpContextAccessor Accessor
+
+@{
+    ViewData["Title"] = "Pedido";
+    string[] listaFuncoes = Accessor.HttpContext.Session.GetString("Functions").Split(",");
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="mr-4"><h1 class="m-0">Pedido</h1></li>
+                    @if (listaFuncoes.Contains("ver_rel_pedidos"))
+                    {
+                        <li class="mr-4"><button type="button" id="btnPdf" class="btn btn-sm btn-default">PDF</button></li>
+                    }
+
+                    @if (listaFuncoes.Contains("fin_pedidos"))
+                    {
+                        <li class="mr-4"><button type="button" id="btnFinalizar" class="btn btn-sm btn-danger">Finalizar</button></li>
+                    }
+                </ol>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active"><a asp-action="Index">Pedidos</a></li>
+                    <li class="breadcrumb-item active">Pedido</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    <div class="row mb-3">
+                        <div class="col-sm-2">
+                            <label asp-for="Id"></label>
+                            <input type="text" asp-for="Id" class="form-control form-control-sm" readonly/>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="ClienteId"><span class="text-danger">*</span> Cliente</label>
+                            <select id="ClienteId" name="ClienteId" class="form-control form-control-sm" onchange="GetTabelaPreco()"></select>
+                            <input type="hidden" id="cliente" value="@Html.DisplayFor(Cliente => Cliente.ClienteId)" />
+                            <span asp-validation-for="ClienteId" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="TabelaId"><span class="text-danger">*</span> Tabela de preços</label>
+                            <select id="TabelaId" name="TabelaId" class="form-control form-control-sm"></select>
+                            <input type="hidden" id="tabela" value="@Html.DisplayFor(Tabela => Tabela.TabelaId)" />
+                            <span asp-validation-for="TabelaId" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <label asp-for="Contrato"></label>
+                            <input type="text" asp-for="Contrato" class="form-control form-control-sm" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="DataEntrada_Data">Data de entrada</label>
+                            <input type="text" asp-for="DataEntrada" class="form-control form-control-sm" readonly />
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="PrevisaoEntrega_Data"><span class="text-danger">*</span> Previsão de entrega</label>
+                            <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
+                                <input type="text" asp-for="PrevisaoEntrega" class="form-control form-control-sm datetimepicker-input" data-target="#reservationdatetime" />
+                                <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Observacoes">Observações</label>
+                        <textarea asp-for="Observacoes" class="form-control form-control-sm"></textarea>
+                    </div>
+
+                    <div class="text-right mb-4">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            Itens
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Produto</th>
+                                        <th>Cópias</th>
+                                        <th>Arquivos</th>
+                                        <th>Index</th>
+                                        <th>Preço</th>
+                                        <th>Situação</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbItens"></tbody>
+                            </table>
+
+                            <div class="my-2">
+                                <button type="button" class="btn btn-primary" onclick="ModalPedidoItem()">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Editar -->
+<div class="modal" id="modalPedidoItem">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Produto</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="modalIdItem" />
+                    <input type="hidden" id="modalProdutoId" />
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="modalProduto">Poroduto</label>
+                            <select id="modalProduto" class="form-control form-control-sm" onchange="GetPreco(this.value)"></select>
+                            <span id="modalProdutoErro" class="text-danger" style="display:none">Selecione um produto</span>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="modalPreco">Preço</label>
+                            <input type="text" id="modalPreco" class="form-control form-control-sm decimal" />
+                            <span id="modalPrecoErro" class="text-danger" style="display:none">Informe o preço</span>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="modalCopias">Cópias</label>
+                            <input type="number" id="modalCopias" class="form-control form-control-sm" />
+                            <span id="modalCopiasErro" class="text-danger" style="display:none">Informe a quantidade de cópias</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-check pt-4">
+                                <input type="checkbox" class="form-check-input" id="modalIndex">
+                                <label for="modalIndex">Adicionar páginas Index no álbum</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="modalBtnSalvar">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="~/js/pedido/edit.js"></script>

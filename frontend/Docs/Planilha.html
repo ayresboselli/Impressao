@@ -1,0 +1,113 @@
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Pedido @Html.DisplayFor(p => p.Id)</title>
+</head>
+<body>
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td width="30%"><center><img src="~/img/logo.png" width="60%"></center></td>
+                <td>
+                    <small>
+                        Piovelli - Soluções em TI<br>
+                        CNPJ: 14.942.348/0001-02<br>
+                        Rua Amaro Eduardo dos Santos, 11<br>
+                        86755-000, Vila Mariana, Ângulo - PR<br>
+                        Fone: (44) 999226148 E-Mail: <a href="mailto:contato@piovelli.com.br">contato@piovelli.com.br</a>
+                    </small>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td width="33%"><small><b>Pedido: @Html.DisplayFor(p => p.Id)</b></small></td>
+                <td width="34%" align="center"><small><b>Entrada:</b> @ViewBag.DataEntrada</small></td>
+                <td width="33%" align="right"><small><b>Previsão de Entrega:</b> @ViewBag.PrevisaoEntrega</small></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <small><b>Cliente:</b> @Html.DisplayFor(p => p.Cliente.Id) - @Html.DisplayFor(p => p.Cliente.RazaoSocial)</small>
+                </td>
+                <td>
+                    <small><b>Endereço:</b> @Html.DisplayFor(p => p.Cliente.Logradouro), @Html.DisplayFor(p => p.Cliente.Numero) - @Html.DisplayFor(p => p.Cliente.Complemento), @Html.DisplayFor(p => p.Cliente.Cep), @Html.DisplayFor(p => p.Cliente.Bairro), @Html.DisplayFor(p => p.Cliente.Cidade)</small>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <small><b>CNPJ:</b> @Html.DisplayFor(p => p.Cliente.CpfCnpj)</small>
+                </td>
+                <td>
+                    <small><b>Fone:</b> @Html.DisplayFor(p => p.Cliente.Telefone) &nbsp;&nbsp;&nbsp;&nbsp;<b>E-Mail:</b> @Html.DisplayFor(p => p.Cliente.Email)</small>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <br>
+
+    <table width="100%" cellpadding="5">
+        <tr>
+            <td>
+                <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                    <thead>
+                        <tr>
+                            <td><small><b>Álbum</b></small></td>
+                            <td><small><b>Fotos</b></small></td>
+                        </tr>
+                    </thead>
+                </table>
+            </td>
+            <td>
+                <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                    <thead>
+                        <tr>
+                            <td><small><b>Álbum</b></small></td>
+                            <td><small><b>Fotos</b></small></td>
+                        </tr>
+                    </thead>
+                </table>
+            </td>
+            <td>
+                <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                    <thead>
+                        <tr>
+                            <td><small><b>Álbum</b></small></td>
+                            <td><small><b>Fotos</b></small></td>
+                        </tr>
+                    </thead>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table width="100%" border="1" cellspacing="0" cellpadding="3">
+        <tr>
+            <td>
+                <small>Total de álbuns:</small> <b>10</b>
+            </td>
+            <td>
+                <small>Total de fotos:</small> <b>100</b>
+            </td>
+            <td>
+                <small>Média de fotos por álbum:</small> <b>10</b>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

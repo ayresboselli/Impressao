@@ -1,0 +1,27 @@
+﻿@model Impressao.Models.MateriaPrimaGrupo
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label asp-for="Id"></label>
+            <input type="number" asp-for="Id" onchange="ValidaId(this.value)" class="form-control form-control-sm" readonly />
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label for="Titulo"><span class="text-danger">*</span> Titulo</label>
+            <input type="text" asp-for="Titulo" class="form-control form-control-sm" required/>
+            <span asp-validation-for="Titulo" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Descricao"></label>
+    <textarea type="text" asp-for="Descricao" class="form-control form-control-sm"></textarea>
+</div>
+
+<div class="text-right">
+    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+</div>

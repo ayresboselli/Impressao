@@ -1,0 +1,327 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Impressao
+build_property.RootNamespace = Impressao
+build_property.ProjectDir = C:\Users\Ayres\Documents\Projetos\Piovelli\Impressão\impressao_pro\Impressao\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Ayres\Documents\Projetos\Piovelli\Impressão\impressao_pro\Impressao
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Celula/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VsdWxhXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Celula/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VsdWxhXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Celula/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VsdWxhXEZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Celula/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VsdWxhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/ClienteGrupo/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZUdydXBvXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/ClienteGrupo/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZUdydXBvXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/ClienteGrupo/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZUdydXBvXEZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/ClienteGrupo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZUdydXBvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Cliente/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Cliente/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Cliente/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Cliente/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Config/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZmlnXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Empresa/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/MateriaPrimaGrupo/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYVByaW1hR3J1cG9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/MateriaPrimaGrupo/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYVByaW1hR3J1cG9cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/MateriaPrimaGrupo/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYVByaW1hR3J1cG9cRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/MateriaPrimaGrupo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYVByaW1hR3J1cG9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/MateriaPrima/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYVByaW1hXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/MateriaPrima/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYVByaW1hXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/MateriaPrima/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYVByaW1hXEZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/MateriaPrima/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYVByaW1hXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/PedidoReimpressao/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvUmVpbXByZXNzYW9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/PedidoReimpressao/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvUmVpbXByZXNzYW9cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/PedidoReimpressao/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvUmVpbXByZXNzYW9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/Arquivos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXEFycXVpdm9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/Finalizados.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXEZpbmFsaXphZG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/ReportOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXFJlcG9ydE9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/ReportSpreadsheet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXFJlcG9ydFNwcmVhZHNoZWV0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/UploadJpgFile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXFVwbG9hZEpwZ0ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/UploadJpgFolder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXFVwbG9hZEpwZ0ZvbGRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Pedido/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Perfil/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Perfil/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Perfil/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/ProdutoGrupo/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b0dydXBvXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/ProdutoGrupo/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b0dydXBvXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/ProdutoGrupo/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b0dydXBvXEZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/ProdutoGrupo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b0dydXBvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Produto/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Produto/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Produto/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b1xGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Produto/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/SetorEstoque/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0b3JFc3RvcXVlXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/SetorEstoque/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0b3JFc3RvcXVlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/SetorEstoque/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0b3JFc3RvcXVlXEZvcm0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/SetorEstoque/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0b3JFc3RvcXVlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/TabelaPreco/Clientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFiZWxhUHJlY29cQ2xpZW50ZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/TabelaPreco/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFiZWxhUHJlY29cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/TabelaPreco/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFiZWxhUHJlY29cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/TabelaPreco/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFiZWxhUHJlY29cRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/TabelaPreco/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFiZWxhUHJlY29cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/TabelaPreco/Produtos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFiZWxhUHJlY29cUHJvZHV0b3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/UnidadeMedidaConversao/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pZGFkZU1lZGlkYUNvbnZlcnNhb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/UnidadeMedidaConversao/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pZGFkZU1lZGlkYUNvbnZlcnNhb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/UnidadeMedidaConversao/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pZGFkZU1lZGlkYUNvbnZlcnNhb1xGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/UnidadeMedidaConversao/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pZGFkZU1lZGlkYUNvbnZlcnNhb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/UnidadeMedida/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pZGFkZU1lZGlkYVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/UnidadeMedida/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pZGFkZU1lZGlkYVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/UnidadeMedida/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pZGFkZU1lZGlkYVxGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/UnidadeMedida/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVW5pZGFkZU1lZGlkYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Usuario/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Usuario/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Usuario/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xGb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Usuario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Usuario/Password.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayres/Documents/Projetos/Piovelli/Impressão/impressao_pro/Impressao/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-3d34s4wwas

@@ -1,0 +1,97 @@
+ALTER TABLE `dev_producao`.`produtos` 
+CHANGE COLUMN `deslocamento_frente_x` `deslocamento_frente_x` INT NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `deslocamento_frente_y` `deslocamento_frente_y` INT NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `deslocamento_verso_x` `deslocamento_verso_x` INT NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `deslocamento_verso_y` `deslocamento_verso_y` INT NOT NULL DEFAULT 0 ;
+
+06/02
+Records OK
+18/02
+
+20/02
+Organize the index screen OK
+Organize the forms OK
+Data validate OK
+Delete itens OK
+25/02
+
+27/02
+Upload files OK
+View files OK
+04/03
+
+06/03
+Reprint task OK
+Authentication OK
+11/03
+
+13/03 - 18/03
+
+20/03
+Imposition
+Front and back OK
+Front only OK
+Front with info on back OK
+Magazine
+25/03
+
+27/03
+Reports OK
+ - List of albums and files by item OK
+ - Order reports OK
+01/04
+
+03/04
+Create index on add item in order OK
+Panoramics OK
+15/04
+
+17/04
+Create Importation and PDF in backend OK
+Records of configs OK
+22/04
+
+24/04
+Tests
+29/04
+
+Carregar informações de pedidos e produtos na tela de visualização de arquivos
+Liscence
+Authorization
+
+Prices Table
+
+
+Pedido de reimpressão
+Apontamento
+
+Almoxarifado
+
+Engenharia de produtos
+
+
+
+
+
+0 - Aguardando arquivos
+DataUpload == null
+
+1 - Processando arquivos
+DataUpload != null && DataProcessamento == null
+
+2 - Aguardando aprovação
+DataProcessamento != null && DataAprovacao == null
+
+3 - Gerando PDF
+DataAprovacao != null && DataImposicao == null
+
+4 - Pronto para a impressão
+DataImposicao != null
+
+
+Quantidade de pedidos ativos
+Quantidade de pedidos por dia
+Quantidade de arquivos por dia
+
+
+sc create Impressão binpath= "C:\Program Files\Piovelli\Impressão\Impressao.exe" start="auto"

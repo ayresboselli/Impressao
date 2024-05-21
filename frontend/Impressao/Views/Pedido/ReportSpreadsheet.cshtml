@@ -1,0 +1,169 @@
+﻿@page
+@model Impressao.Models.PedidoItem;
+@{
+    Layout = "";
+}
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="icon" type="image/x-icon" href="~/img/favicon.ico">
+    <title>Pedido @Html.DisplayFor(p => p.Pedido.Id)</title>
+</head>
+<body>
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td width="30%"><center><img src="~/logo.jpg" width="60%"></center></td>
+                <td>
+                    <small>
+                        @ViewBag.Empresa.RazaoSocial<br>
+                        CNPJ: @ViewBag.Empresa.Cnpj<br>
+                        @ViewBag.Empresa.Logradouro, @ViewBag.Empresa.Numero<br>
+                        @ViewBag.Empresa.Cep, @ViewBag.Empresa.Bairro, @ViewBag.Cidade.Nome - @ViewBag.Cidade.UF<br>
+                        Fone: @ViewBag.Empresa.Telefone E-Mail: <a href="mailto:@ViewBag.Empresa.Email">@ViewBag.Empresa.Email</a>
+                    </small>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td width="33%"><small><b>Pedido: @Html.DisplayFor(p => p.Pedido.Id)</b></small></td>
+                <td width="34%" align="center"><small><b>Entrada:</b> @ViewBag.DataEntrada</small></td>
+                <td width="33%" align="right"><small><b>Previsão de Entrega:</b> @ViewBag.PrevisaoEntrega</small></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <small><b>Cliente:</b> @Html.DisplayFor(p => p.Pedido.Cliente.Id) - @Html.DisplayFor(p => p.Pedido.Cliente.RazaoSocial)</small>
+                </td>
+                <td>
+                    <small><b>Endereço:</b> @Html.DisplayFor(p => p.Pedido.Cliente.Logradouro), @Html.DisplayFor(p => p.Pedido.Cliente.Numero) - @Html.DisplayFor(p => p.Pedido.Cliente.Complemento), @Html.DisplayFor(p => p.Pedido.Cliente.Cep), @Html.DisplayFor(p => p.Pedido.Cliente.Bairro), @Html.DisplayFor(p => p.Pedido.Cliente.Cidade.Nome) - @Html.DisplayFor(p => p.Pedido.Cliente.Cidade.UF)</small>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <small><b>CNPJ:</b> @Html.DisplayFor(p => p.Pedido.Cliente.CpfCnpj)</small>
+                </td>
+                <td>
+                    <small><b>Fone:</b> @Html.DisplayFor(p => p.Pedido.Cliente.Telefone) &nbsp;&nbsp;&nbsp;&nbsp;<b>E-Mail:</b> @Html.DisplayFor(p => p.Pedido.Cliente.Email)</small>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <small><b>Produto:</b> @Html.DisplayFor(p => p.Produto.Id) - @Html.DisplayFor(p => p.Produto.Titulo)</small>
+                </td>
+                <td>
+                    <small><b>Cópias:</b> @Html.DisplayFor(p => p.Copias)</small>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <br>
+
+    <table width="100%" cellpadding="5">
+        <tr>
+            @if(ViewBag.Itens1.Count > 0)
+            {
+            <td width="33%">
+                <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                    <thead>
+                        <tr>
+                            <td><small><b>Álbum</b></small></td>
+                            <td><small><b>Fotos</b></small></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Itens1)
+                        {
+                            <tr>
+                                <td><small>@item.album</small></td>
+                                <td><small>@item.quantidade</small></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </td>
+            }
+            @if (ViewBag.Itens2.Count > 0)
+            {
+            <td width="33%">
+                <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                    <thead>
+                        <tr>
+                            <td><small><b>Álbum</b></small></td>
+                            <td><small><b>Fotos</b></small></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Itens2)
+                        {
+                            <tr>
+                                <td><small>@item.album</small></td>
+                                <td><small>@item.quantidade</small></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </td>
+            }
+            @if (ViewBag.Itens3.Count > 0)
+            {
+            <td width="33%">
+                <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                    <thead>
+                        <tr>
+                            <td><small><b>Álbum</b></small></td>
+                            <td><small><b>Fotos</b></small></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Itens3)
+                        {
+                            <tr>
+                                <td><small>@item.album</small></td>
+                                <td><small>@item.quantidade</small></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </td>
+            }
+        </tr>
+    </table>
+
+    <table width="100%" border="1" cellspacing="0" cellpadding="3">
+        <tr>
+            <td>
+                <small>Total de álbuns:</small> <b>@ViewBag.TotalAlbuns</b>
+            </td>
+            <td>
+                <small>Total de fotos:</small> <b>@ViewBag.TotalFotos</b>
+            </td>
+            <td>
+                <small>Média de fotos por álbum:</small> <b>@ViewBag.Media</b>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

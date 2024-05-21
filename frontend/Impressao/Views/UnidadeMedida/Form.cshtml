@@ -1,0 +1,28 @@
+﻿@model Impressao.Models.UnidadeMedida
+
+<div class="row">
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label asp-for="Id"></label>
+            <input type="number" asp-for="Id" onchange="ValidaId(this.value)" class="form-control form-control-sm" readonly />
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label for="Sigla"><span class="text-danger">*</span> Sigla</label>
+            <input type="text" asp-for="Sigla" class="form-control form-control-sm" required />
+            <span asp-validation-for="Sigla" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label for="Titulo"><span class="text-danger">*</span> Titulo</label>
+            <input type="text" asp-for="Titulo" class="form-control form-control-sm" required />
+            <span asp-validation-for="Titulo" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+
+<div class="text-right">
+    <button type="submit" class="btn btnm btn-success">Salvar</button>
+</div>

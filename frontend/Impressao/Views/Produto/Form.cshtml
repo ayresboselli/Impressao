@@ -1,0 +1,260 @@
+﻿@model Impressao.Models.Produto
+
+<div class="row mb-3">
+    <div class="col-sm-2">
+        <label asp-for="Id"></label>
+        <input type="number" asp-for="Id" onchange="ValidaId(this.value)" class="form-control form-control-sm" readonly />
+    </div>
+    <div class="col-sm-7">
+        <label for="Titulo"><span class="text-danger">*</span> Titulo</label>
+        <input type="text" asp-for="Titulo" class="form-control form-control-sm" required />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+    <div class="col-sm-2">
+        <div class="mt-4 pt-2">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" asp-for="RenomearArquivo">
+                <label for="RenomearArquivo">Renomear arquivos</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <div class="mt-4 pt-2">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" asp-for="Ativo">
+                <label asp-for="Ativo"></label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-sm-3">
+        <label for="ProdutoGrupoId"><span class="text-danger">*</span> Grupo</label>
+        <select id="ProdutoGrupoId" name="ProdutoGrupoId" class="form-control form-control-sm" required></select>
+        <input type="hidden" id="grupo" value="@Html.DisplayFor(Produto => Produto.ProdutoGrupoId)" />
+    </div>
+    <div class="col-sm-2">
+        <label for="DisposicaoImpressao"><span class="text-danger">*</span> Disposição da impressão</label>
+        <select asp-for="DisposicaoImpressao" onchange="DispImpressao()" class="form-control form-control-sm">
+            <option value="S">Simplex</option>
+            <option value="D">Duplex</option>
+        </select>
+    </div>
+    <div class="col-sm-2">
+        <label for="DisposicaoImagem"><span class="text-danger">*</span> Disposição da imagem</label>
+        <select asp-for="DisposicaoImagem" onchange="DispImagem()" class="form-control form-control-sm">
+            <option value="S">Simplex</option>
+            <option value="D">Duplex</option>
+        </select>
+    </div>
+    <div class="col-sm-3">
+        <label for="QuantidadeArquivosProduto"><span class="text-danger">*</span> Quantidade de arquivos por produto</label>
+        <input type="number" asp-for="QuantidadeArquivosProduto" class="form-control form-control-sm" required />
+        <span asp-validation-for="QuantidadeArquivosProduto" class="text-danger"></span>
+    </div>
+    <div class="col-sm-2">
+        <div class="mt-4 pt-2">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" asp-for="Giro180">
+                <label for="Giro180">Girar verso em 180°</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DivImpFotos" class="card">
+    <div class="card-header">
+        Imposição de Fotos
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-sm-2">
+                <label for="Largura"><span class="text-danger">*</span> Largura da imagem</label>
+                <input type="number" asp-for="Largura" onchange="Imagem()" class="form-control form-control-sm" />
+            </div>
+            <div class="col-sm-2">
+                <label for="Altura"><span class="text-danger">*</span> Altura da imagem</label>
+                <input type="number" asp-for="Altura" onchange="Imagem()" class="form-control form-control-sm" />
+            </div>
+            <div class="col-sm-2">
+                <label for="Orientacao"><span class="text-danger">*</span> Orientação da imagem</label>
+                <select asp-for="Orientacao" onchange="Imagem()" class="form-control form-control-sm">
+                    <option value="0">Cima</option>
+                    <option value="90">Direita</option>
+                    <option value="180">Baixo</option>
+                    <option value="270">Esquerda</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <label for="LarguraMidia"><span class="text-danger">*</span> Largura da mídia</label>
+                <input type="number" asp-for="LarguraMidia" onchange="Midia()" class="form-control form-control-sm" />
+            </div>
+            <div class="col-sm-3">
+                <label for="AlturaMidia"><span class="text-danger">*</span> Altura da mídia</label>
+                <input type="number" asp-for="AlturaMidia" onchange="Midia()" class="form-control form-control-sm" />
+            </div>
+        </div>
+
+        <div id="dvImposicao" class="row mb-3" style="display:none">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        Frente
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <div class="col-sm-1"><input type="text" asp-for="DeslocamentoFrenteX" onchange="ImagemFrente()" class="form-control form-control-sm" /></div>
+                                    <div class="col-sm-10"></div>
+                                    <div class="col-sm-1 text-right"><span id="deslFX"></span></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1"><input type="text" asp-for="DeslocamentoFrenteY" onchange="ImagemFrente()" class="form-control form-control-sm" /></div>
+                            <div id="cardFrente" class="col-sm-10">
+                                <div id="DvMidiaFrente" class="dvImpMidia"></div>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1"><span id="deslFY"></span></div>
+                            <div class="col-sm-10"></div>
+                            <div class="col-sm-1"></div>
+                        </div>
+
+                        <div class="mt-2">
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="AddInfo(0)">Adicionar</button>
+                            <div class="table-responsive mt-2">
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Tipo</th>
+                                            <th>Texto</th>
+                                            <th>Rotação</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="InfoFrente">
+                                        <tr>
+                                            <td colspan='4'>Nenhuma informação cadastrada</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div id="DivImpVerso" class="card">
+                    <div class="card-header">
+                        Verso
+                    </div>
+                    <div class="card-body">
+                        <div id="DivVerso">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col-sm-1"><input type="text" asp-for="DeslocamentoVersoX" onchange="ImagemVerso()" class="form-control form-control-sm" /></div>
+                                        <div class="col-sm-10"></div>
+                                        <div class="col-sm-1 text-right"><span id="deslVX"></span></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-1"><input type="text" asp-for="DeslocamentoVersoY" onchange="ImagemVerso()" class="form-control form-control-sm" /></div>
+                                <div id="cardVerso" class="col-sm-10">
+                                    <div id="DvMidiaVerso" class="dvImpMidia"></div>
+                                </div>
+                                <div class="col-sm-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-1"><span id="deslVY"></span></div>
+                                <div class="col-sm-10"></div>
+                                <div class="col-sm-1"></div>
+                            </div>
+
+                            <div class="mt-2">
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="AddInfo(1)">Adicionar</button>
+                                <div class="table-responsive mt-2">
+                                    <table class="table table-bordered table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Tipo</th>
+                                                <th>Texto</th>
+                                                <th>Rotação</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="InfoVerso">
+                                            <tr>
+                                                <td colspan='4'>Nenhuma informação cadastrada</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Engenharia
+    </div>
+    <div class="card-body">
+        <div class="mb-2">
+            <a id="btnAddCelula" class="btn btn-sm btn-secondary">Adicionar célula de trabalho</a>
+        </div>
+        <div id="listaCelulas" class="list-group col"></div>
+    </div>
+</div>
+
+
+<div class="text-right">
+    <button type="submit" class="btn btn-success">Salvar</button>
+</div>
+
+<div class="modal" id="modalAddCelula">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Células de trabalho</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="input-group">
+                    <select id="modalAddCelulaSlc" class="form-control">
+                        <option></option>
+                    </select>
+                    <div class="input-group-append">
+                        <button type="button" id="modalAddCelulaAdd" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="/dist/js/Sortable/Sortable.js"></script>

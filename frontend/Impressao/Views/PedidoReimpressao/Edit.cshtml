@@ -1,0 +1,78 @@
+﻿@model Impressao.Models.PedidoReimpressao
+
+@{
+    ViewData["Title"] = "PedidoReimpressao";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Reimpressão</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Reimpressões</a></li>
+                    <li class="breadcrumb-item active">Reimpressão</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        Pedido: <b>@Html.DisplayFor(p => p.PedidoItem.Pedido.Id)</b>
+                    </div>
+                    <div class="col-sm-4">
+                        Cliente: <b>@Html.DisplayFor(p => p.PedidoItem.Pedido.Cliente.Id) - @Html.DisplayFor(p => p.PedidoItem.Pedido.Cliente.RazaoSocial)</b>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        Produto: <b>@Html.DisplayFor(p => p.PedidoItem.Produto.Id) - @Html.DisplayFor(p => p.PedidoItem.Produto.Titulo)</b>
+                    </div>
+                </div>
+
+
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="arquivo"></label>
+                            <input type="number" id="arquivo" autofocus class="form-control form-control-sm" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div class="text-left mt-4">
+                            <button class="btn btn-sm btn-success" onclick="Adicionar()">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-sm table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Álbum</th>
+                            <th>Frente</th>
+                            <th>Verso</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbReimpressao"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/js/reimpressao/edit.js"></script>

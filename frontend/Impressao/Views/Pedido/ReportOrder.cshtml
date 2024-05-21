@@ -1,0 +1,155 @@
+﻿@page
+@model Impressao.Models.Pedido;
+@{
+    Layout = "";
+    double total = 0;
+    double totalPreco = 0;
+}
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="icon" type="image/x-icon" href="~/img/favicon.ico">
+    <title>Pedido @Html.DisplayFor(p => p.Id)</title>
+</head>
+<body>
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td width="30%"><center><img src="~/logo.jpg" width="60%"></center></td>
+                <td>
+                    <small>
+                        @ViewBag.Empresa.RazaoSocial<br>
+                        CNPJ: @ViewBag.Empresa.Cnpj<br>
+                        @ViewBag.Empresa.Logradouro, @ViewBag.Empresa.Numero<br>
+                        @ViewBag.Empresa.Cep, @ViewBag.Empresa.Bairro, @ViewBag.Cidade.Nome - @ViewBag.Cidade.UF<br>
+                        Fone: @ViewBag.Empresa.Telefone E-Mail: <a href="mailto:@ViewBag.Empresa.Email">@ViewBag.Empresa.Email</a>
+                    </small>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td width="33%"><small><b>Pedido: @Html.DisplayFor(p => p.Id)</b></small></td>
+                <td width="34%" align="center"><small><b>Entrada:</b> @ViewBag.DataEntrada</small></td>
+                <td width="33%" align="right"><small><b>Previsão de Entrega:</b> @ViewBag.PrevisaoEntrega</small></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <small><b>Cliente:</b> @Html.DisplayFor(p => p.Cliente.Id) - @Html.DisplayFor(p => p.Cliente.RazaoSocial)</small>
+                </td>
+                <td>
+                    <small><b>Endereço:</b> @Html.DisplayFor(p => p.Cliente.Logradouro), @Html.DisplayFor(p => p.Cliente.Numero) - @Html.DisplayFor(p => p.Cliente.Complemento), @Html.DisplayFor(p => p.Cliente.Cep), @Html.DisplayFor(p => p.Cliente.Bairro), @Html.DisplayFor(p => p.Cliente.Cidade.Nome) - @Html.DisplayFor(p => p.Cliente.Cidade.UF)</small>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <small><b>CNPJ:</b> @Html.DisplayFor(p => p.Cliente.CpfCnpj)</small>
+                </td>
+                <td>
+                    <small><b>Fone:</b> @Html.DisplayFor(p => p.Cliente.Telefone) &nbsp;&nbsp;&nbsp;&nbsp;<b>E-Mail:</b> @Html.DisplayFor(p => p.Cliente.Email)</small>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <br>
+    
+    <table width="100%" border="1" cellspacing="0" cellpadding="3">
+        <thead>
+            <tr>
+                <td width="6%" valign="top"><small><b>Código</b></small></td>
+                <td valign="top"><small><b>Descrição do produto</b></small></td>
+                <td width="12%" valign="top" align="right"><small><b>Cópias</b></small></td>
+                <td width="12%" valign="top" align="right"><small><b>Arq. por produto</b></small></td>
+                <td width="12%" valign="top" align="right"><small><b>Quantidade</b></small></td>
+                <td width="12%" valign="TOP" align="RIGHT"><small><b>Unitário (R$)</b></small></td>
+                <td width="12%" valign="TOP" align="RIGHT"><small><b>Total (R$)</b></small></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.Itens.Count > 0)
+            {
+                @foreach (var item in ViewBag.Itens)
+                {
+                    total += item.Copias * item.PedidoItemArquivos.Count / item.Produto.QuantidadeArquivosProduto;
+                    totalPreco += item.Copias * item.PedidoItemArquivos.Count / item.Produto.QuantidadeArquivosProduto * item.Preco;
+
+                    <tr>
+                        <td width="6%" valign="top" align="left"><small>@item.Id</small></td>
+                        <td valign="top"><small>@item.Produto.Id - @item.Produto.Titulo</small></td>
+                        <td valign="top"><small>@item.Copias</small></td>
+                        <td valign="top"><small>@item.Produto.QuantidadeArquivosProduto</small></td>
+                        <td width="12%" valign="top" align="right">
+                            <small>
+                                @(item.Copias * item.PedidoItemArquivos.Count / item.Produto.QuantidadeArquivosProduto)
+                            </small>
+                        </td>
+                        <td width="12%" valign="TOP" align="right"><small>@item.Preco.ToString("N2")</small></td>
+                        <td width="12%" valign="TOP" align="right"><small>@((item.Copias * item.PedidoItemArquivos.Count / item.Produto.QuantidadeArquivosProduto * item.Preco).ToString("N2"))</small></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7"><center>Nenhum produto</center></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4"><small><b>TOTAL:</b></small></td>
+                <td align="right"><small><b>@(total)</b></small></td>
+                <td></td>
+                <td align="right"><small><b>@(totalPreco.ToString("N2"))</b></small></td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <br>
+    <hr>
+
+    <pre>@Html.DisplayFor(p => p.Observacoes)</pre>
+
+    @*<hr>
+    
+    <table width="100%">
+    <tbody><tr>
+    <td valign="TOP">
+    <b>Frete por conta do:</b> SEM FRETE<br>
+    <b>Transportadora:</b> O MESMO<br>
+    <br>
+    <b>Forma de pgto.:</b> 30 DIAS<br>
+    </td>
+    <td width="15%" valign="TOP" align="RIGHT">
+    <b>Frete.......:</b><br>
+    <b>Outras desp.:</b><br>
+    <b>Sub-total...:</b><br>
+    <b>Desconto....:</b><br>
+    <b>T O T A L...:</b>
+    </td>
+    <td width="12%" valign="TOP" align="RIGHT">
+    0,00<br>
+    0,00<br>
+    148,00<br>
+    0,00<br>
+    148,00
+    </td>
+    </tr>
+    </tbody></table>*@
+
+</body>
+</html>

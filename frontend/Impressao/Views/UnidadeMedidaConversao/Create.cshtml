@@ -1,0 +1,36 @@
+﻿@model Impressao.ViewModel.UnidadeMedidaConversaoViewModel
+
+@{
+    ViewData["Title"] = "Conversão de unidades de medida";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Conversão de unidades de medida</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Conversões de unidades de medida</a></li>
+                    <li class="breadcrumb-item active">Conversão</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Create" method="post">
+                    @Html.Partial("~/Views/UnidadeMedidaConversao/Form.cshtml")
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/js/unidadeMedidaConversao/edit.js"></script>

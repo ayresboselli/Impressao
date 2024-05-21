@@ -1,0 +1,142 @@
+﻿@model Impressao.Models.TabelaPreco
+
+@{
+    ViewData["Title"] = "Tabela de preços - Clientes";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Tabela de preços - Clientes</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Tabelas de preços</a></li>
+                    <li class="breadcrumb-item active">Tabela de preços - Clientes</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Id</label>
+                            @Html.DisplayFor(model => model.Id)
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Titulo</label>
+                            @Html.DisplayFor(model => model.Titulo)
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label>Tabela Padrão</label>
+                            @if (Model.Padrao)
+                            {
+                                <span class="text-success">Sim</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Não</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label>Ativo</label>
+                            @if (Model.Ativo)
+                            {
+                                <span class="text-success">Sim</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Não</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <button class="btn btn-sm btn-success" onclick="ModalCliente()">Novo</button>
+                </div>
+
+                <table class="table table-sm table-bordered table-striped datatable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Padrão</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.TabelaPrecoClientes.Count > 0)
+                        {
+                            @foreach (var item in Model.TabelaPrecoClientes)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Cliente.Id - @item.Cliente.RazaoSocial</td>
+                                    <td>
+                                        @if (item.Padrao){ <span class="text-success">Sim</span> }else{ <span class="text-danger">Não</span> }
+                                    </td>
+                                    <td>
+                                        <a href="javascript:void(0)" onclick="ModalCliente(@item.Id, @item.ClienteId, '@item.Padrao')" title="Editar" class="mx-2 text-primary"><i class="fas fa-pen"></i></a>
+                                        <a href="javascript:void(0)" onclick="DeletarCliente(@item.Id)" title="Deletar" class="mx-2 text-danger"><i class="fas fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Cliente -->
+<div id="modalCliente" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Cliente</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="mId" />
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <select id="mCliente" class="form-control"></select>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input type="checkbox" id="mPadrao" class="form-check-input">
+                            <label for="mPadrao">Tabela Padrão</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="SalvarCliente()">Salvar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/js/tabelaPreco/index.js"></script>

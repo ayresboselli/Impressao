@@ -1,0 +1,113 @@
+﻿@model Impressao.Models.Produto
+
+@{
+    ViewData["Title"] = "Produto";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Produto</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Produtos</a></li>
+                    <li class="breadcrumb-item active">Produto</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    @Html.Partial("~/Views/Produto/Form.cshtml")
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Informações -->
+<div class="modal" id="modalInfo">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Informações</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" id="InfoId">
+                <input type="hidden" id="InfoPagina">
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="InfoTipo">Tipo</label>
+                            <select id="InfoTipo" class="form-control">
+                                <option value='barras'>Código de barras</option>
+                                <option value='texto'>Texto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label for="InfoTexto">Informação</label>
+                            <select id="InfoTexto" class="form-control">
+                                <option value="{pedido}">Id do pedido</option>
+                                <option value="{op}">O.P.</option>
+                                <option value="{id_album}">Id do álbum</option>
+                                <option value="{seq_foto}">Seguência da foto</option>
+                                <option value="{nome_album}">Nome do álbum</option>
+                                <option value="{nome_pdf}">Nome do PDF</option>
+                                <option value="{nome_arquivo}">Nome do arquivo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="InfoPosX">Posição X</label>
+                            <input type="number" id="InfoPosX" placeholder="mm" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="InfoPosY">Posição Y</label>
+                            <input type="number" id="InfoPosY" placeholder="mm" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="InfoOrientacao">Rotação</label>
+                            <select id="InfoOrientacao" class="form-control">
+                                <option value='0'>Nenhuma</option>
+                                <option value='90'>À esquerda</option>
+                                <option value='270'>À direita</option>
+                                <option value='180'>Para baixo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="InfoSalvar()">Salvar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/js/produto/edit.js"></script>

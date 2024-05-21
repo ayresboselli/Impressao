@@ -1,0 +1,145 @@
+﻿@model Impressao.Models.Empresa
+
+@{
+    ViewData["Title"] = "Empresa";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Empresa</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Empresa</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+        @ViewBag.Success
+    </div>
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Salvar" method="post" enctype="multipart/form-data">
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <label for="Cnpj">Logo</label>
+                            <img src="~/logo.jpg" width="100%" />
+                            <input type="file" asp-for="Logo" accept="image/*" class="form-control form-control-sm">
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="row mb-3">
+                                <div class="col-sm-8">
+                                    <label for="Cnpj"><span class="text-danger">*</span> CNPJ</label>
+                                    <input type="text" asp-for="Cnpj" onkeyup="MascaraCNPJ(this)" onblur="BuscaCNPJ(this.value)" class="form-control form-control-sm" required>
+                                    <span asp-validation-for="Cnpj" class="text-danger"></span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="DataCriacao"><span class="text-danger">*</span> Data de cadastro</label>
+                                    <input type="date" asp-for="DataCriacao" class="form-control form-control-sm" required>
+                                    <span asp-validation-for="DataCriacao" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="RazaoSocial"><span class="text-danger">*</span> Razão social</label>
+                                <input type="text" asp-for="RazaoSocial" class="form-control form-control-sm" required>
+                                <span asp-validation-for="RazaoSocial" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="NomeFantasia">Nome fantasia</label>
+                                <input type="text" asp-for="NomeFantasia" class="form-control form-control-sm">
+                                <span asp-validation-for="NomeFantasia" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <label for="Email"><span class="text-danger">*</span> E-mail</label>
+                            <input type="email" asp-for="Email" class="form-control form-control-sm" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="Telefone"><span class="text-danger">*</span> Telefne principal</label>
+                            <input type="text" asp-for="Telefone" class="form-control form-control-sm" required>
+                            <span asp-validation-for="Telefone" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="Telefone2">Telefone opcional</label>
+                            <input type="text" asp-for="Telefone2" class="form-control form-control-sm">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <label for="Cep"><span class="text-danger">*</span> CEP</label>
+                            <input type="text" asp-for="Cep" class="form-control form-control-sm" onkeyup="MascaraCEP(this)" onblur="BuscaCEP(this.value)" required>
+                            <span asp-validation-for="Cep" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-8">
+                            <label for="Bairro"><span class="text-danger">*</span> Bairro</label>
+                            <input type="text" asp-for="Bairro" class="form-control form-control-sm" required>
+                            <span asp-validation-for="Bairro" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="Logradouro"><span class="text-danger">*</span> Logradouro</label>
+                            <input type="text" asp-for="Logradouro" class="form-control form-control-sm" required>
+                            <span asp-validation-for="Logradouro" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="Numero">Número</label>
+                            <input type="number" asp-for="Numero" class="form-control form-control-sm">
+                        </div>
+                        <div class="col-sm-4">
+                            <label asp-for="Complemento"></label>
+                            <input type="text" asp-for="Complemento" class="form-control form-control-sm">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="estado"><span class="text-danger">* </span>Estado</label>
+                                <select id="estado" name="estado" class="form-control form-control-sm" onchange="SelecionaEstado(this.value)" required></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="cidade"><span class="text-danger">* </span>Cidade</label>
+                                <select id="cidade" name="cidade" class="form-control form-control-sm" onchange="javascript:document.getElementById('CidadeIbge').value = this.value" required>
+                                    <option value=''>-- Selecione o estado --</option>
+                                </select>
+                                <input type="hidden" asp-for="CidadeId">
+                                <span asp-validation-for="CidadeId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/js/empresa/index.js"></script>

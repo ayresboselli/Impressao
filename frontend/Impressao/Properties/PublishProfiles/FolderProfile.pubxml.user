@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Ayres\Documents\Projetos\Piovelli\Impressão\impressao_pro\Impressao\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2024-04-03T01:21:40.5289605Z;True|2024-04-02T22:06:11.4891065-03:00;True|2024-02-12T06:54:00.4501779-03:00;True|2023-10-26T08:09:02.7564546-03:00;True|2023-10-23T06:17:26.0020035-03:00;True|2023-10-23T05:57:31.3512141-03:00;True|2023-10-20T05:43:18.0349465-03:00;True|2023-10-18T17:45:31.0245849-03:00;True|2023-08-06T21:28:06.3230842-03:00;True|2023-08-03T15:32:49.8034280-03:00;True|2023-05-01T12:28:02.4621129-03:00;False|2023-05-01T12:26:09.6107357-03:00;False|2023-05-01T12:25:11.0710538-03:00;True|2023-05-01T10:42:06.6405699-03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

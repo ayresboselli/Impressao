@@ -1,0 +1,47 @@
+﻿@model Impressao.Models.PedidoReimpressao
+
+@{
+    ViewData["Title"] = "PedidoReimpressao";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Reimpressão</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Reimpressões</a></li>
+                    <li class="breadcrumb-item active">Reimpressão</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Create" method="post">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="arquivo"></label>
+                                <input type="number" id="arquivo" name="arquivo" autofocus class="form-control form-control-sm" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="text-left mt-4">
+                                <button type="submit" class="btn btn-sm btn-success">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

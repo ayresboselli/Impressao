@@ -1,0 +1,104 @@
+﻿@model List<Impressao.Models.Produto>
+@inject IHttpContextAccessor Accessor
+
+@{
+    ViewData["Title"] = "Produtos";
+    string[] listaFuncoes = Accessor.HttpContext.Session.GetString("Functions").Split(",");
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Produtos</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Produtos</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
+        @ViewBag.Success
+    </div>
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                @Html.AntiForgeryToken()
+                @if (listaFuncoes.Contains("cad_produtos"))
+                {
+                    <div class="mb-2">
+                        <a class="btn btn-sm btn-success" asp-action="Create">Novo</a>
+                    </div>
+                }
+
+                <table class="table table-sm table-bordered table-striped datatable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titulo</th>
+                            <th>Grupo</th>
+                            <th>Tamanho (mm)</th>
+                            <th>Ativo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Titulo</td>
+                                    <td>@item.ProdutoGrupo.Id - @item.ProdutoGrupo.Titulo</td>
+                                    <td>@item.Largura x @item.Altura</td>
+                                    <td>
+                                        @if (item.Ativo)
+                                        {
+                                            <span class="text-success">Sim</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger">Não</span>
+                                        }
+                                    </td>
+                                    <td style="width:100px">
+                                        @if (listaFuncoes.Contains("cad_produtos"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id" title="Editar" class="mx-2"><i class="fas fa-pen"></i></a>
+                                            <a asp-action="Duplicate" asp-route-id="@item.Id" title="Duplicar" class="mx-2"><i class="fas fa-copy"></i></a>
+                                            @if (item.PedidoItens == null || item.PedidoItens.Count == 0)
+                                            {
+                                                <a href="havascript:void(0)" onclick="Deletar(@item.Id)" title="Deletar" class="mx-2 text-danger"><i class="fas fa-trash"></i></a>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">Nenhum registro</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/js/produto/index.js"></script>
